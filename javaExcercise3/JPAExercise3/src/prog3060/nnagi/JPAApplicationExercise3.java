@@ -52,46 +52,14 @@ public class JPAApplicationExercise3 {
             tempEntityManager.persist(tempGeographicArea);
             tempEntityManager.getTransaction().commit();
 
-            //description for houseHoldType
-            HouseHoldType tempHouseHoldType = new HouseHoldType();
-            tempHouseHoldType.setDescription("Non-census-family households");
-            tempEntityManager.persist(tempHouseHoldType);
-            tempEntityManager.getTransaction().commit();
             
-          //description for HouseHoldSize
-            HouseHoldSize tempHouseHoldSize = new HouseHoldSize();
-            tempHouseHoldSize.setDescription("2 or more persons");
-            tempEntityManager.persist(tempHouseHoldSize);
-            tempEntityManager.getTransaction().commit();
-            
-          //description for HouseHoldsByAgeRange
-            HouseHoldsByAgeRange tempHouseHoldsByAgeRange = new HouseHoldsByAgeRange();
-            tempHouseHoldsByAgeRange.setDescription("Total - Households by number of persons aged 0 to 17 years");
-            tempEntityManager.persist(tempHouseHoldsByAgeRange);
-            tempEntityManager.getTransaction().commit();
-            
-          //description for HouseHoldEarners
-            HouseHoldEarners tempHouseHoldsEarners = new HouseHoldEarners();
-            tempHouseHoldsEarners.setDescription("1 earner or more");
-            tempEntityManager.persist(tempHouseHoldsEarners);
-            tempEntityManager.getTransaction().commit();
-            
-          //description for total income
-            TotalIncome tempTotalIncome = new TotalIncome();
-            tempTotalIncome.setDescription("$70,000 to $79,999");
-            tempEntityManager.persist(tempTotalIncome);
-            tempEntityManager.getTransaction().commit();
-            
-            
-           
-            
-            GeographicArea hGeoArea = tempEntityManager.find(GeographicArea.class,tempGeographicArea.getGeographicAreaID());
+             GeographicArea hGeoArea = tempEntityManager.find(GeographicArea.class,tempGeographicArea.getGeographicAreaID());
             CensusYear hCensusYear = tempEntityManager.find(CensusYear.class,1);
-            HouseHoldType hHouseHoldType = tempEntityManager.find(HouseHoldType.class, tempHouseHoldType.getId());
-            HouseHoldSize hHouseHoldSize = tempEntityManager.find(HouseHoldSize.class, tempHouseHoldSize.getId());
-            HouseHoldsByAgeRange hHouseHoldsByAgeRange = tempEntityManager.find(HouseHoldsByAgeRange.class, tempHouseHoldsByAgeRange.getId());
-            HouseHoldEarners hHouseHoldsEarners = tempEntityManager.find(HouseHoldEarners.class, tempHouseHoldsEarners.getId());
-            TotalIncome hTotalIncome = tempEntityManager.find(TotalIncome.class, tempTotalIncome.getId());
+            HouseHoldType hHouseHoldType = tempEntityManager.find(HouseHoldType.class, 11);
+            HouseHoldSize hHouseHoldSize = tempEntityManager.find(HouseHoldSize.class, 3);
+            HouseHoldsByAgeRange hHouseHoldsByAgeRange = tempEntityManager.find(HouseHoldsByAgeRange.class, 7);
+            HouseHoldEarners hHouseHoldsEarners = tempEntityManager.find(HouseHoldEarners.class, 3);
+            TotalIncome hTotalIncome = tempEntityManager.find(TotalIncome.class, 14);
             
             HouseHold tempHouseHold = new HouseHold();
             tempHouseHold.setGeographicArea(hGeoArea);
