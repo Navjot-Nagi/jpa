@@ -1,0 +1,59 @@
+package prog3060.nnagi;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+public class JPAApplicationExercise3 {
+	
+	static final String PERSISTENCE_UNIT_NAME = "Exercise3JPAApplication";
+
+	public static void main(String[] args)
+	{		
+		EntityManagerFactory tempEntityManagerFactory = null;
+        EntityManager tempEntityManager = null;
+		// TODO Auto-generated method stub
+		try
+		{
+			tempEntityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+            tempEntityManager = tempEntityManagerFactory.createEntityManager();
+            tempEntityManager.getTransaction().begin();
+            
+            HouseHold tempHouseHold = tempEntityManager.find(HouseHold.class, "1" );
+            
+            //List<Customer> result = tempEntityManager.createQuery( "from Customer", Customer.class ).getResultList();
+		}
+		catch(Exception e)
+		{
+			if (tempEntityManager != null)
+            {
+
+                tempEntityManager.getTransaction().rollback();
+
+            }
+
+            e.printStackTrace();
+			
+		}
+		finally
+		{
+			if (tempEntityManager != null)
+            {
+
+                //tempEntityManager.close();
+
+            }
+
+            if (tempEntityManagerFactory != null)
+            {
+
+                //tempEntityManagerFactory.close();
+
+            }
+		}
+		
+
+	}
+
+}

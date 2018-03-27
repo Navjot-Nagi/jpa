@@ -1,0 +1,7 @@
+package prog3060.nnagi;
+
+public class HouseHoldEarners 
+{
+	private int id;
+	private String description;
+}

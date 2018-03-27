@@ -1,0 +1,7 @@
+package prog3060.nnagi;
+
+public class CensusYear 
+{
+	private int censusYearID;
+	private int censusYear;
+}

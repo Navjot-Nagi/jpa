@@ -1,0 +1,14 @@
+package prog3060.nnagi;
+
+public class HouseHold 
+{
+	private int id;
+	private GeographicArea geographicArea;
+	private CensusYear censusYear;
+	private HouseHoldType houseHoldType;
+	private HouseHoldSize houseHoldSize;
+	private HouseHoldsByAgeRange houseHoldsByAgeRange;
+	private HouseHoldEarners houseHoldEarners;.
+	private TotalIncome totalIncome;
+	private int numberReported;
+}

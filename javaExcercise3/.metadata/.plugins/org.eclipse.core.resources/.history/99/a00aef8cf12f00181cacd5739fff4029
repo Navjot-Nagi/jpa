@@ -1,0 +1,12 @@
+package prog3060.nnagi;
+
+public class Age 
+{
+	private int ageID;
+	private AgeGroup ageGroup;
+	private CensusYear censusYear;
+	private GeographicArea geographicArea;
+	private int combined;
+	private int male;
+	private int female;
+}

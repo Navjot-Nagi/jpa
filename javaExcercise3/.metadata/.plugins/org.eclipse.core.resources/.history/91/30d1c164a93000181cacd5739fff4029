@@ -1,0 +1,27 @@
+package prog3060.nnagi;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="AGE", schema="APP")
+public class Age 
+{
+	@Id
+	@Column(name="AGEID")
+	private int ageID;
+	@Column(name="AGEGROUP")
+	private AgeGroup ageGroup;
+	@Column(name="CENSUSYEAR")
+	private CensusYear censusYear;
+	@Column(name="GEOGRAPHICAREA")
+	private GeographicArea geographicArea;
+	@Column(name="COMBINED")
+	private int combined;
+	@Column(name="MALE")
+	private int male;
+	@Column(name="FEMALE")
+	private int female;
+}

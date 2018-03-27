@@ -1,0 +1,20 @@
+package prog3060.nnagi;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="HOUSEHOLDSIZE", schema="APP")
+public class HouseHoldSize 
+{
+	@Id
+    @GeneratedValue
+	@OneToMany
+	@JoinColumn(name="ID", nullable = false)
+	private int id;
+	private String description;
+}

@@ -1,0 +1,10 @@
+package prog3060.nnagi;
+
+public class GeographicArea 
+{
+	private int geographicAreaID;
+	private int code;
+	private int level;
+	private String name;
+	private int alternativeCode;
+}

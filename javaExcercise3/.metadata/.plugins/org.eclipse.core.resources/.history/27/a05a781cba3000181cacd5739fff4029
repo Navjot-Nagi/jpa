@@ -1,0 +1,23 @@
+package prog3060.nnagi;
+
+public class JPAApplicationExercise3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try
+		{
+			
+		}
+		catch(Exception e)
+		{
+			
+		}
+		finally
+		{
+			
+		}
+		
+
+	}
+
+}

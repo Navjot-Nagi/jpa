@@ -1,0 +1,44 @@
+package prog3060.nnagi;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+
+@Entity
+@Table(name="HOUSEHOLDSBYAGERANGE", schema="APP")
+public class HouseHoldsByAgeRange 
+{
+	@Id
+	@GeneratedValue
+	@OneToMany
+	@JoinColumn(name="ID", nullable = false)	
+	private short id;
+	
+	@Column(name="DESCRIPTION", nullable = false)
+	private String description;
+	
+	public HouseHoldsByAgeRange()
+	{}
+
+	public short getId() {
+		return id;
+	}
+
+	public void setId(short id) {
+		this.id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
+}

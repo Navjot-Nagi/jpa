@@ -1,0 +1,51 @@
+package prog3060.nnagi;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="HOUSEHOLD", schema="APP")
+public class HouseHold 
+{
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID", nullable = false)
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name="GEOGRAPHICAREA", nullable = false)
+	private GeographicArea geographicArea;
+	
+	@ManyToOne
+	@JoinColumn(name="CENSUSYEAR", nullable = false)
+	private CensusYear censusYear;
+	
+	@ManyToOne
+	@JoinColumn(name="HOUSEHOLDTYPE", nullable = false)
+	private HouseHoldType houseHoldType;
+	
+	@ManyToOne
+	@JoinColumn(name="HOUSEHOLDSIZE", nullable = false)
+	private HouseHoldSize houseHoldSize;
+	
+	@ManyToOne
+	@JoinColumn(name="HOUSEHOLDSBYAGERANGE", nullable = false)
+	private HouseHoldsByAgeRange houseHoldsByAgeRange;
+	
+	@ManyToOne
+	@JoinColumn(name="HOUSEHOLDEARNERS", nullable = false)
+	private HouseHoldEarners houseHoldEarners;
+	
+	@ManyToOne
+	@JoinColumn(name="TOTALINCOME", nullable = false)
+	private TotalIncome totalIncome;
+	
+	@Column(name="NUMBERREPORTED", nullable = false)
+	private int numberReported;
+}

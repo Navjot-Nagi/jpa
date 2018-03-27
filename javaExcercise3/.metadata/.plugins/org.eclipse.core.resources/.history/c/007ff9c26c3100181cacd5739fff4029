@@ -1,0 +1,127 @@
+package prog3060.nnagi;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+public class JPAApplicationExercise3 {
+	
+	static final String PERSISTENCE_UNIT_NAME = "Exercise3JPAApplication";
+
+	public static void main(String[] args)
+	{		
+		EntityManagerFactory tempEntityManagerFactory = null;
+        EntityManager tempEntityManager = null;
+		// TODO Auto-generated method stub
+		try
+		{
+			tempEntityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+            tempEntityManager = tempEntityManagerFactory.createEntityManager();
+            tempEntityManager.getTransaction().begin();
+            
+            String tempJPQLQuery = "SELECT h, ga, cy, ht, hs, har, he, ti from HouseHold h "
+            						+"JOIN h.geographicArea ga "
+            						+"JOIN h.censusYear cy "
+            						+"JOIN h.houseHoldType ht "
+            						+"JOIN h.houseHoldSize hs "
+            						+"JOIN h.houseHoldsByAgeRange har "
+            						+"JOIN h.houseHoldEarners he "
+            						+"JOIN h.totalIncome ti "
+            						+"where ga.alternativeCode = :alternativeCode "
+            						+"AND cy.censusYear = :censusYear "
+            						+"AND ht.description = :HouseHoldType "
+            						+"AND hs.description = :HouseHoldSize "
+            						+"AND har.description = :HouseHoldsByAgeRange "
+            						+"AND he.description = :HouseHoldEarners "
+            						+"AND ti.description = :TotalIncome";
+            
+            //HouseHold tempHouseHold = tempEntityManager.find(HouseHold.class, 1 );
+            
+            List<HouseHold> result = tempEntityManager.createQuery(tempJPQLQuery).getResultList();
+            
+            //Create new geographic area
+            GeographicArea tempGeographicArea = new GeographicArea();
+            tempGeographicArea.setCode(60);
+            tempGeographicArea.setLevel(1);
+            tempGeographicArea.setName("Bharat");
+            tempGeographicArea.setAlternativeCode(60);
+            
+            tempEntityManager.persist(tempGeographicArea);
+            tempEntityManager.getTransaction().commit();
+
+            //description for houseHoldType
+            HouseHoldType tempHouseHoldType = new HouseHoldType();
+            tempHouseHoldType.setDescription("Non-census-family households");
+            tempEntityManager.persist(tempHouseHoldType);
+            tempEntityManager.getTransaction().commit();
+            
+          //description for HouseHoldSize
+            HouseHoldSize tempHouseHoldSize = new HouseHoldSize();
+            tempHouseHoldSize.setDescription("2 or more persons");
+            tempEntityManager.persist(tempHouseHoldSize);
+            tempEntityManager.getTransaction().commit();
+            
+          //description for HouseHoldsByAgeRange
+            HouseHoldsByAgeRange tempHouseHoldsByAgeRange = new HouseHoldsByAgeRange();
+            tempHouseHoldsByAgeRange.setDescription("Total - Households by number of persons aged 0 to 17 years");
+            tempEntityManager.persist(tempHouseHoldsByAgeRange);
+            tempEntityManager.getTransaction().commit();
+            
+          //description for HouseHoldEarners
+            HouseHoldEarners tempHouseHoldsEarners = new HouseHoldEarners();
+            tempHouseHoldsEarners.setDescription("1 earner or more");
+            tempEntityManager.persist(tempHouseHoldsEarners);
+            tempEntityManager.getTransaction().commit();
+           
+            
+            GeographicArea hGeoArea = tempEntityManager.find(GeographicArea.class,tempGeographicArea.getGeographicAreaID());
+            CensusYear hCensusYear = tempEntityManager.find(CensusYear.class,1);
+            HouseHoldType hHouseHoldType = tempEntityManager.find(HouseHoldType.class, tempHouseHoldType.getId());
+            HouseHoldSize hHouseHoldSize = tempEntityManager.find(HouseHoldSize.class, tempHouseHoldSize.getId());
+            HouseHoldsByAgeRange hHouseHoldsByAgeRange = tempEntityManager.find(HouseHoldsByAgeRange.class, tempHouseHoldsByAgeRange.getId());
+            
+            
+            HouseHold tempHouseHold = new HouseHold();
+            tempHouseHold.setGeographicArea(hGeoArea);
+            tempHouseHold.setCensusYear(hCensusYear);
+            tempHouseHold.setHouseHoldType(hHouseHoldType);
+            tempHouseHold.setHouseHoldSize(hHouseHoldSize);
+            
+            
+		}
+		catch(Exception e)
+		{
+			if (tempEntityManager != null)
+            {
+
+                tempEntityManager.getTransaction().rollback();
+
+            }
+
+            e.printStackTrace();
+			
+		}
+		finally
+		{
+			if (tempEntityManager != null)
+            {
+
+                //tempEntityManager.close();
+
+            }
+
+            if (tempEntityManagerFactory != null)
+            {
+
+                //tempEntityManagerFactory.close();
+
+            }
+		}
+		
+
+	}
+
+}

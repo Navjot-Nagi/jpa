@@ -1,0 +1,7 @@
+package prog3060.nnagi;
+
+public class AgeGroup 
+{
+	private int ageGroupID;
+	private String description;
+}

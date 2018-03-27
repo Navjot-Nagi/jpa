@@ -1,0 +1,25 @@
+package prog3060.nnagi;
+
+public class JPAApplicationExercise3 {
+	
+	static final String PERSISTENCE_UNIT_NAME = "Exercise3JPAApplication";
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try
+		{
+			
+		}
+		catch(Exception e)
+		{
+			
+		}
+		finally
+		{
+			
+		}
+		
+
+	}
+
+}
